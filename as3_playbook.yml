@@ -1,0 +1,25 @@
+---
+- name: DEPLOY AS3 Declare
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  
+  vars:
+    uriMethod: "POST"
+
+  vars_files:
+    - ../creds/big_creds.yml
+
+  tasks:
+  - name: AS3
+    uri:
+      url: https://18.130.50.202/mgmt/shared/appsvcs/declare
+      user: "{{ bigip_user }}"
+      password: "{{ bigip_pass }}"
+      method: "{{ uriMethod }}"
+      body: "{{ lookup('file','as3_json1.json') }}"
+      force_basic_auth: yes
+      validate_certs: no
+      status_code: 200
+      body_format: json
+...
