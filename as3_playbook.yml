@@ -14,8 +14,8 @@
   - name: AS3
     uri:
       url: https://18.130.50.202/mgmt/shared/appsvcs/declare
-      user: "{{ bigip_user }}"
-      password: "{{ bigip_pass }}"
+      user: "{{ f5.user }}"
+      password: "{{ f5.pass }}"
       method: "{{ uriMethod }}"
       body: "{{ lookup('file','as3_json1.json') }}"
       force_basic_auth: yes
